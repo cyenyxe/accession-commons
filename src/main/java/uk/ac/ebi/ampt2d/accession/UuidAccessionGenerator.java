@@ -38,9 +38,8 @@ public class UuidAccessionGenerator<T> extends SingleAccessionGenerator<T, UUID>
 
     @Override
     protected UUID generateAccession(T object) {
-
         byte[] hashBytes = ByteBuffer.allocate(4).putInt(object.hashCode()).array();
-        UUID accession = UUIDUtil.generateVersion5Uuid(namespaceUuidBytes, hashBytes);
+        UUID accession = UUIDUtil.generateVersion5Uuid(namespaceUuidBytes,hashBytes);
         return accession;
     }
 
