@@ -15,23 +15,11 @@
  * limitations under the License.
  *
  */
-package uk.ac.ebi.ampt2d.accession.test.generator;
+package uk.ac.ebi.ampt2d.accession.file;
 
-import uk.ac.ebi.ampt2d.accession.SingleAccessionGenerator;
+import org.springframework.context.annotation.ComponentScan;
+import uk.ac.ebi.ampt2d.accession.AccessioningProperties;
 
-public class TestPrefixAccessionGenerator extends SingleAccessionGenerator<String, String> {
-
-    private int counter;
-
-    private String prefix;
-
-    public TestPrefixAccessionGenerator(String prefix) {
-        counter = 0;
-        this.prefix = prefix;
-    }
-
-    @Override
-    protected String generateAccession(String object) {
-        return prefix + counter++;
-    }
+@ComponentScan(basePackages = "uk.ac.ebi.ampt2d.accession.file", basePackageClasses = AccessioningProperties.class)
+public class FileConfiguration {
 }

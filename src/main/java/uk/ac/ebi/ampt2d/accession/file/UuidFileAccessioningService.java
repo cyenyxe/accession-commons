@@ -17,7 +17,10 @@
  */
 package uk.ac.ebi.ampt2d.accession.file;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import uk.ac.ebi.ampt2d.accession.AccessioningProperties;
 import uk.ac.ebi.ampt2d.accession.AccessioningService;
 import uk.ac.ebi.ampt2d.accession.UuidAccessionGenerator;
 
@@ -28,14 +31,15 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-//@Service
-//@Profile("file-uuid")
-public class UuidFileAccessioningService extends AccessioningService<UuidFile, UUID> {
+@Service
+@Profile("file-uuid")
+public class  UuidFileAccessioningService extends AccessioningService<UuidFile, UUID> {
 
+    @Autowired
     private UuidFileAccessionRepository fileRepository;
 
-    public UuidFileAccessioningService(String namespace) {
-        super(new UuidAccessionGenerator<>(namespace));
+    public UuidFileAccessioningService(AccessioningProperties properties) {
+        super(new UuidAccessionGenerator<>(properties.getNamespace()));
     }
 
     @Override

@@ -24,11 +24,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@Table
 public class UuidFile implements File<UUID> {
 
     @Id
@@ -40,7 +38,6 @@ public class UuidFile implements File<UUID> {
     private String hash;
 
     @Column(nullable = false, unique = true)
-    @JsonIgnore
     private UUID accession;
 
     UuidFile() {
